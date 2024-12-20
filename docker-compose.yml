@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  nginx-logtail:
+    restart: unless-stopped
+    image: nginx:latest
+    container_name: logtail-nginx
+    hostname: logtail.ru
+    volumes:
+      - ./public:/usr/share/nginx/html
+    environment:
+      - NGINX_HOST=logtail.ru
+      - NGINX_INDEX=index.html
+      - NGINX_ROOT=/usr/share/nginx/html
+      - NGINX_PORT=80
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.nginx-logtail.rule=Host(`logtail.ru`)
+      - traefik.http.routers.nginx-logtail.entrypoints=websecure
+      - traefik.http.routers.nginx-logtail.tls=true
+      - traefik.http.routers.nginx-logtail.tls.certresolver=letsencrypt
+      - traefik.http.services.nginx-logtail.loadbalancer.server.port=80
+    networks:
+      - web
+
+networks:
+  web:
+    external: true # стандартная для всех на этом сервере
