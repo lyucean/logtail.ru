@@ -8,6 +8,7 @@ on:
   pull_request:
     branches: [ "main" ]
 
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -58,6 +59,23 @@ jobs:
             cd /var/www/logtail.ru/
             docker compose --profile prod up -d
             docker compose ps
+
+      - name: Set permissions for log file
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: |
+            # Создаем файл логов, если он не существует
+            sudo touch /usr/share/nginx/html/leads.log
+            # Меняем владельца на www-data (пользователь nginx/php)
+            sudo chown www-data:www-data /usr/share/nginx/html/leads.log
+            # Устанавливаем права на чтение и запись
+            sudo chmod 664 /usr/share/nginx/html/leads.log
+            # Проверяем, что права установлены
+            ls -la /usr/share/nginx/html/leads.log
 
   test:
     runs-on: ubuntu-latest
