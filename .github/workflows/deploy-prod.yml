@@ -8,13 +8,20 @@ on:
   pull_request:
     branches: [ "main" ]
 
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: production
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Create .env file
+        run: |
+          echo "TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}" > .env
+          echo "TELEGRAM_CHAT_ID=${{ secrets.TELEGRAM_CHAT_ID }}" >> .env
+          mkdir -p public
+          cp .env public/.env
 
       - name: Create project directory
         uses: appleboy/ssh-action@master
@@ -23,9 +30,9 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          script: mkdir -p /home/user/logtail.ru
+          script: mkdir -p /var/www/logtail.ru
 
-      - name: Copy docker-compose.yml to remote server
+      - name: Copy files to remote server
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.HOST }}
@@ -38,6 +45,7 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     needs: [deploy]
+    environment: production
     steps:
       - name: Create web network and start docker compose
         uses: appleboy/ssh-action@master
@@ -48,7 +56,7 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd /var/www/logtail.ru/
-            docker compose up -d
+            docker compose --profile prod up -d
             docker compose ps
 
   test:
@@ -58,12 +66,13 @@ jobs:
       - name: Check website
         uses: wei/curl@v1
         with:
-          args:  https://logtail.ru/
+          args: https://logtail.ru/
 
   alert:
     name: Alert
     needs: [publish]
     runs-on: ubuntu-latest
+    environment: production
     steps:
       - name: send telegram message on push
         uses: appleboy/telegram-action@master
