@@ -249,3 +249,43 @@ footer a.text-secondary:hover {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
+.stats-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.stats-image-container {
+    position: relative;
+}
+
+.stats-background-image {
+    position: relative;
+    z-index: -1;
+}
+
+@media (min-width: 768px) {
+    .stats-image-wrapper {
+        position: absolute;
+        top: -48px;
+        right: -64px;
+        z-index: -1;
+    }
+
+    .stats-image-container {
+        min-height: 625px;
+    }
+}
+
+@media (max-width: 767px) {
+    .stats-image-wrapper {
+        margin-bottom: 2rem;
+    }
+
+    .stats-image-container {
+        min-height: auto;
+    }
+}
+
+.stats-text-max-width {
+    max-width: 320px;
+}
