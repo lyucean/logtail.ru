@@ -1,6 +1,5 @@
-version: '3'
-
 services:
+  # Продакшн Nginx сервис
   nginx-logtail:
     restart: unless-stopped
     image: nginx:latest
@@ -8,6 +7,7 @@ services:
     hostname: logtail.ru
     volumes:
       - ./public:/usr/share/nginx/html
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
     environment:
       - NGINX_HOST=logtail.ru
       - NGINX_INDEX=index.html
@@ -22,7 +22,43 @@ services:
       - traefik.http.services.nginx-logtail.loadbalancer.server.port=80
     networks:
       - web
+    depends_on:
+      - php-fpm
+    profiles: [ "prod" ]
+
+  # Локальный Nginx для разработки
+  nginx-dev:
+    image: nginx:latest
+    container_name: logtail-nginx-dev
+    volumes:
+      - ./public:/usr/share/nginx/html
+      - ./nginx/dev.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "8080:80"
+    environment:
+      - NGINX_INDEX=index.html
+      - NGINX_ROOT=/usr/share/nginx/html
+    depends_on:
+      - php-fpm
+    networks:
+      - app-network  # Используем общую сеть
+    profiles: [ "dev" ]
+
+  php-fpm:
+    image: php:8.1-fpm
+    container_name: logtail-php
+    restart: unless-stopped
+    volumes:
+      - ./public:/usr/share/nginx/html
+    networks:
+      - web
+      - app-network  # Добавляем общую сеть
+    profiles: [ "prod", "dev" ]
 
 networks:
   web:
-    external: true # стандартная для всех на этом сервере
+    external: true
+  app-network: # Определяем новую сеть
+    driver: bridge
+  default:
+    driver: bridge

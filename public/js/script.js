@@ -1,27 +1,148 @@
-// Создаем падающие буквы
-const matrix = document.getElementById('matrix');
-const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?/`~'; // Расширенный набор символов
-const colors = [
-    'rgba(0, 255, 0, 0.8)', // Яркий зеленый
-    'rgba(0, 200, 0, 0.6)', // Темный зеленый
-    'rgba(0, 150, 0, 0.4)', // Более тусклый зеленый
-    'rgba(0, 255, 0, 1)',   // Полностью яркий зеленый
-    'rgba(0, 255, 100, 0.7)' // Зеленовато-желтый оттенок
-];
+document.addEventListener('DOMContentLoaded', function() {
+    // Функция для обработки всех форм
+    function setupFormHandler(formId, action, successCallback) {
+        const form = document.getElementById(formId);
+        if (!form) return;
 
-function createFallingLetter() {
-    const span = document.createElement('span');
-    span.textContent = letters[Math.floor(Math.random() * letters.length)];
-    span.style.left = Math.random() * 100 + 'vw';
-    span.style.animationDuration = Math.random() * 3 + 1 + 's'; // Скорость падения
-    span.style.color = colors[Math.floor(Math.random() * colors.length)];
-    matrix.appendChild(span);
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
 
-    // Удаляем букву после завершения анимации
-    span.addEventListener('animationend', () => {
-        span.remove();
+            // Создаем объект FormData
+            const formData = new FormData(form);
+            formData.append('action', action);
+
+            // Находим или создаем элементы для отображения ошибок и успеха
+            let errorElement = form.querySelector('.alert-danger') ||
+                (form.parentElement && form.parentElement.querySelector('.alert-danger'));
+            let successElement = form.querySelector('.alert-success') ||
+                (form.parentElement && form.parentElement.querySelector('.alert-success'));
+
+            // Если элементы не найдены, создаем их
+            if (!errorElement) {
+                errorElement = document.createElement('div');
+                errorElement.className = 'alert alert-danger d-none';
+                form.parentNode.insertBefore(errorElement, form.nextSibling);
+            }
+
+            if (!successElement) {
+                successElement = document.createElement('div');
+                successElement.className = 'alert alert-success d-none';
+                form.parentNode.insertBefore(successElement, form.nextSibling);
+            }
+
+            // Скрываем предыдущие сообщения
+            errorElement.classList.add('d-none');
+            successElement.classList.add('d-none');
+
+            // Отправляем AJAX запрос
+            fetch('api_handler.php', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Если есть callback для успешной отправки, вызываем его
+                        if (typeof successCallback === 'function') {
+                            successCallback(data);
+                        } else {
+                            // Иначе показываем стандартное сообщение об успехе
+                            successElement.textContent = data.message || 'Успешно отправлено!';
+                            successElement.classList.remove('d-none');
+
+                            // Очищаем форму
+                            form.reset();
+
+                            // Если указан URL для перенаправления, выполняем его через 2 секунды
+                            if (data.redirect) {
+                                setTimeout(() => {
+                                    window.location.href = data.redirect;
+                                }, 2000);
+                            }
+                        }
+                    } else {
+                        // Показываем ошибку
+                        errorElement.textContent = data.message || 'Произошла ошибка. Попробуйте еще раз.';
+                        errorElement.classList.remove('d-none');
+                    }
+                })
+                .catch(error => {
+                    errorElement.textContent = 'Произошла ошибка при отправке запроса.';
+                    errorElement.classList.remove('d-none');
+                    console.error('Error:', error);
+                });
+        });
+    }
+
+    // Настраиваем обработчики для всех форм
+    setupFormHandler('loginForm', 'login');
+    setupFormHandler('signupForm', 'signup');
+
+    // Форма в верхней части страницы (hero section) - изменено с 'top_form' на 'demo'
+    setupFormHandler('heroForm', 'demo', function(data) {
+        const form = document.getElementById('heroForm');
+        if (!form) return;
+
+        // Безопасно ищем элементы для сообщений
+        let successElement = form.querySelector('.alert-success') ||
+            (form.parentElement && form.parentElement.querySelector('.alert-success'));
+        let errorElement = form.querySelector('.alert-danger') ||
+            (form.parentElement && form.parentElement.querySelector('.alert-danger'));
+
+        // Если элементы не найдены, создаем их
+        if (!successElement) {
+            successElement = document.createElement('div');
+            successElement.className = 'alert alert-success mt-3';
+            form.parentNode.insertBefore(successElement, form.nextSibling);
+        }
+
+        if (!errorElement) {
+            errorElement = document.createElement('div');
+            errorElement.className = 'alert alert-danger mt-3 d-none';
+            form.parentNode.insertBefore(errorElement, form.nextSibling);
+        }
+
+        // Скрываем ошибку и показываем успех
+        errorElement.classList.add('d-none');
+        successElement.textContent = data.message || 'Спасибо! Мы отправили вам инструкции по настройке.';
+        successElement.classList.remove('d-none');
+
+        // Очищаем форму
+        form.reset();
     });
-}
 
-// Генерируем буквы каждые 75 мс для большего количества символов
-setInterval(createFallingLetter, 75);
+    // Форма подписки на новости - изменено с 'bottom_form' на 'newsletter'
+    setupFormHandler('newsletterForm', 'newsletter');
+
+    // Контактная форма
+    setupFormHandler('contactForm', 'contact');
+
+    // Обработка формы в нижней части страницы - изменено с 'bottom_form' на 'newsletter'
+    const footerForm = document.querySelector('.hero form:not(#heroForm)');
+    if (footerForm) {
+        footerForm.id = 'footerForm';
+        setupFormHandler('footerForm', 'newsletter', function(data) {
+            const formContainer = footerForm.parentElement;
+            if (formContainer) {
+                formContainer.innerHTML = `
+                    <div class="alert alert-success">
+                        ${data.message || 'Спасибо за подписку! Мы свяжемся с вами в ближайшее время.'}
+                    </div>
+                `;
+            }
+        });
+    }
+
+    // Переключение между модальными окнами
+    const modals = document.querySelectorAll('.modal');
+    modals.forEach(modal => {
+        modal.addEventListener('hidden.bs.modal', function() {
+            // Сбрасываем формы и скрываем сообщения об ошибках при закрытии модального окна
+            const forms = modal.querySelectorAll('form');
+            forms.forEach(form => form.reset());
+
+            const alerts = modal.querySelectorAll('.alert');
+            alerts.forEach(alert => alert.classList.add('d-none'));
+        });
+    });
+});
