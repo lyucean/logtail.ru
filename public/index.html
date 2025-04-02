@@ -1,469 +1,612 @@
 <!DOCTYPE html>
 <html lang="ru" data-bs-theme="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Logtail - Самый быстрый поиск по логам | Мониторинг логов</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logtail - Самый быстрый поиск по логам | Мониторинг логов</title>
 
-  <!-- SEO метатеги -->
-  <meta name="description" content="Logtail - платформа для мониторинга логов с самым быстрым поиском. Отслеживайте, анализируйте и решайте проблемы в режиме реального времени. Простая интеграция, мощная аналитика.">
-  <meta name="keywords" content="мониторинг логов, анализ логов, поиск по логам, система логирования, observability, log management, logging platform">
+    <!-- SEO метатеги -->
+    <meta name="description"
+          content="Logtail - платформа для мониторинга логов с самым быстрым поиском. Отслеживайте, анализируйте и решайте проблемы в режиме реального времени. Простая интеграция, мощная аналитика.">
+    <meta name="keywords"
+          content="мониторинг логов, анализ логов, поиск по логам, система логирования, observability, log management, logging platform">
 
-  <!-- Open Graph теги -->
-  <meta property="og:title" content="Logtail - Самый быстрый поиск по логам">
-  <meta property="og:description" content="Платформа для мониторинга и анализа логов с молниеносным поиском. Разверните за несколько минут.">
-  <meta property="og:type" content="website">
+    <!-- Open Graph теги -->
+    <meta property="og:title" content="Logtail - Самый быстрый поиск по логам">
+    <meta property="og:description"
+          content="Платформа для мониторинга и анализа логов с молниеносным поиском. Разверните за несколько минут.">
+    <meta property="og:type" content="website">
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
 </head>
 <body class="bg-dark text-light">
 <!-- Навигация -->
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark bg-opacity-75">
-  <div class="container">
-    <a class="navbar-brand" href="#">
-      <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Logtail" height="24">
-    </a>
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-terminal-fill text-primary me-2" viewBox="0 0 16 16">
+            <path d="M0 3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3zm9.5 5.5h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zm-6.354-.354a.5.5 0 1 0 .708.708l2-2a.5.5 0 0 0 0-.708l-2-2a.5.5 0 1 0-.708.708L4.793 6.5 3.146 8.146z"/>
+          </svg>
+          <span class="fw-bold">Logtail</span>
+        </a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-            Платформа
-          </a>
-          <ul class="dropdown-menu dropdown-menu-dark">
-            <li><a class="dropdown-item" href="#">Мониторинг логов</a></li>
-            <li><a class="dropdown-item" href="#">Мониторинг инфраструктуры</a></li>
-            <li><a class="dropdown-item" href="#">Управление инцидентами</a></li>
-            <li><a class="dropdown-item" href="#">Статус страницы</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Документация</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Цены</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-            Сообщество
-          </a>
-          <ul class="dropdown-menu dropdown-menu-dark">
-            <li><a class="dropdown-item" href="#">Руководства</a></li>
-            <li><a class="dropdown-item" href="#">Вопросы</a></li>
-            <li><a class="dropdown-item" href="#">Блог</a></li>
-          </ul>
-        </li>
-      </ul>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        Платформа
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item" href="#">Мониторинг логов</a></li>
+                        <li><a class="dropdown-item" href="#">Мониторинг инфраструктуры</a></li>
+                        <li><a class="dropdown-item" href="#">Управление инцидентами</a></li>
+                        <li><a class="dropdown-item" href="#">Статус страницы</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Документация</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Цены</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        Сообщество
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item" href="#">Руководства</a></li>
+                        <li><a class="dropdown-item" href="#">Вопросы</a></li>
+                        <li><a class="dropdown-item" href="#">Блог</a></li>
+                    </ul>
+                </li>
+            </ul>
 
-      <div class="d-flex gap-3">
-        <a href="/login" class="btn btn-default ">Войти</a>
-        <a href="/signup" class="btn btn-primary">Регистрация</a>
-      </div>
+            <div class="d-flex gap-3">
+                <a href="/login" class="btn btn-default ">Войти</a>
+                <a href="/signup" class="btn btn-primary">Регистрация</a>
+            </div>
+        </div>
     </div>
-  </div>
 </nav>
 
 <!-- Главный экран -->
 <section class="hero min-vh-100 d-flex align-items-center pt-5">
-  <div class="container text-center">
+    <div class="container text-center">
     <span class="text-uppercase fw-bold tracking-widest text-primary">
       Мониторинг, который работает на вас
     </span>
 
-    <h1 class="display-3 fw-bold mt-4">
-      Поиск по логам быстрее,<br>чем когда-либо
-    </h1>
+        <h1 class="display-3 fw-bold mt-4">
+            Поиск по логам быстрее,<br>чем когда-либо
+        </h1>
 
-    <p class="lead mt-3 mx-auto text-light-emphasis" style="max-width: 600px;">
-      Ускорьте диагностику проблем и принятие решений с помощью молниеносного поиска по логам и интеллектуальной аналитики. Время реакции на инциденты сокращается в 10 раз.
-    </p>
+        <p class="lead mt-3 mx-auto text-light-emphasis" style="max-width: 600px;">
+            Ускорьте диагностику проблем и принятие решений с помощью молниеносного поиска по логам и интеллектуальной
+            аналитики. Время реакции на инциденты сокращается в 10 раз.
+        </p>
 
-    <div class="mt-5">
-      <div class="row justify-content-center">
-        <div class="col-12 col-md-8 col-lg-6">
-          <form class="d-flex gap-3">
-            <input type="email" class="form-control bg-dark border-secondary" placeholder="Ваш рабочий email" required>
-            <button type="submit" class="btn btn-primary px-4 text-nowrap">
-              Старт за 30 секунд
-            </button>
-          </form>
-          <p class="mt-3 text-center text-muted mb-5">
-            Разворачивание платформы занимает всего пару минут
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="mt-5 position-relative">
-      <div class="container-fluid px-0">
-        <img
-                width="1367"
-                class="img-fluid mx-auto d-block rounded-3 shadow-lg"
-                alt="Интерфейс системы логирования"
-                src="img/image_1.jpg"
-                loading="lazy"
-        >
-      </div>
-    </div>
-
-    <section class="py-5 container">
-      <p class="text-center text-muted mb-5">
-        Нам доверяют компании
-      </p>
-
-      <div class="row row-cols-2 row-cols-md-4 g-4 justify-content-center align-items-center">
-        <div class="col text-center">
-          <div class="p-4 bg-dark bg-opacity-25 rounded-3 d-flex align-items-center justify-content-center" style="height: 100px;">
-            <img src="img/logo_comp/Gazprom.svg" alt="Газпром" class="img-fluid opacity-50" style="max-height: 60px; object-fit: contain;">
-          </div>
-        </div>
-        <div class="col text-center">
-          <div class="p-4 bg-dark bg-opacity-25 rounded-3 d-flex align-items-center justify-content-center" style="height: 100px;">
-            <img src="img/logo_comp/x5.svg" alt="X5 Group" class="img-fluid opacity-50" style="max-height: 60px; object-fit: contain;">
-          </div>
-        </div>
-        <div class="col text-center">
-          <div class="p-4 bg-dark bg-opacity-25 rounded-3 d-flex align-items-center justify-content-center" style="height: 100px;">
-            <img src="img/logo_comp/atom.svg" alt="Росатом" class="img-fluid opacity-50" style="max-height: 60px; object-fit: contain;">
-          </div>
-        </div>
-        <div class="col text-center">
-          <div class="p-4 bg-dark bg-opacity-25 rounded-3 d-flex align-items-center justify-content-center" style="height: 100px;">
-            <img src="img/logo_comp/nijekamskhim.svg" alt="Нижнекамскнефтехим" class="img-fluid opacity-50" style="max-height: 60px; object-fit: contain;">
-          </div>
-        </div>
-        <div class="col text-center">
-          <div class="p-4 bg-dark bg-opacity-25 rounded-3 d-flex align-items-center justify-content-center" style="height: 100px;">
-            <img src="img/logo_comp/metstroy.svg" alt="Метрострой" class="img-fluid opacity-50" style="max-height: 60px; object-fit: contain;">
-          </div>
-        </div>
-        <div class="col text-center">
-          <div class="p-4 bg-dark bg-opacity-25 rounded-3 d-flex align-items-center justify-content-center" style="height: 100px;">
-            <img src="img/logo_comp/med.svg" alt="Медицина" class="img-fluid opacity-50" style="max-height: 60px; object-fit: contain;">
-          </div>
-        </div>
-        <div class="col text-center">
-          <div class="p-4 bg-dark bg-opacity-25 rounded-3 d-flex align-items-center justify-content-center" style="height: 100px;">
-            <img src="img/logo_comp/sitilink.svg" alt="Ситилинк" class="img-fluid opacity-50" style="max-height: 60px; object-fit: contain;">
-          </div>
-        </div>
-        <div class="col text-center">
-          <div class="p-4 bg-dark bg-opacity-25 rounded-3 d-flex align-items-center justify-content-center" style="height: 100px;">
-            <img src="img/logo_comp/cod.svg" alt="COD" class="img-fluid opacity-50" style="max-height: 60px; object-fit: contain;">
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="container py-5">
-      <div class="row">
-        <div class="col-lg-8">
-          <!-- Заголовок -->
-          <h2 class="display-4 fw-bold mb-4 text-start">
-            Мониторинг в реальном<br>
-            времени
-          </h2>
-
-          <!-- Подзаголовок/описание -->
-          <p class="lead text-secondary mb-5 text-start">
-            Мы собираем все метрики в структурированные данные, которые можно опрашивать как обычную базу данных через SQL.
-            Объединяем данные со всех ваших серверов, приложений, контейнеров, кластеров и облачных сервисов в одном месте
-            с мгновенным доступом.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="container py-5">
-      <div class="row position-relative">
-        <!-- Колонка с изображением -->
-        <div class="col-md-8 position-relative" style="min-height: 625px;">
-          <div class="position-absolute" style="top: -48px; right: -64px; z-index: -1;">
-            <img src="img/image_2.jpg" alt="" class="img-fluid" style="max-width: 1002px;">
-          </div>
+        <div class="mt-5">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8 col-lg-6">
+                    <form class="d-flex gap-3">
+                        <input type="email" class="form-control bg-dark border-secondary"
+                               placeholder="Ваш рабочий email" required>
+                        <button type="submit" class="btn btn-primary px-4 text-nowrap">
+                            Старт за 30 секунд
+                        </button>
+                    </form>
+                    <p class="mt-3 text-center text-muted mb-5">
+                        Разворачивание платформы занимает всего пару минут
+                    </p>
+                </div>
+            </div>
         </div>
 
-        <!-- Колонка с текстом, которая наезжает на изображение -->
-        <div class="col-md-4 mt-5">
-          <p class="text-secondary mb-2 text-start">Обрабатываем до</p>
-          <h3 class="display-5 fw-bold mb-3 text-start">
-            <span class="text-primary">1 миллиарда</span><br>
-            <span class="text-light">
+        <div class="mt-5 position-relative">
+            <div class="container-fluid overflow-hidden px-0">
+                <img width="1367" class="img-fluid mx-auto d-block rounded-3 shadow-lg"
+                     alt="Интерфейс системы логирования" src="img/image_1.jpg" loading="lazy">
+            </div>
+        </div>
+
+        <section class="py-5 container">
+            <p class="text-center text-muted mb-5">
+                Нам доверяют компании
+            </p>
+
+            <div class="row row-cols-2 row-cols-md-4 g-4 justify-content-center align-items-center">
+                <div class="col text-center">
+                    <div class="p-4 bg-dark bg-opacity-25 rounded-3 d-flex align-items-center justify-content-center"
+                         style="height: 100px;">
+                        <img src="img/logo_comp/Gazprom.svg" alt="Газпром" class="img-fluid opacity-50"
+                             style="max-height: 60px; object-fit: contain;">
+                    </div>
+                </div>
+                <div class="col text-center">
+                    <div class="p-4 bg-dark bg-opacity-25 rounded-3 d-flex align-items-center justify-content-center"
+                         style="height: 100px;">
+                        <img src="img/logo_comp/x5.svg" alt="X5 Group" class="img-fluid opacity-50"
+                             style="max-height: 60px; object-fit: contain;">
+                    </div>
+                </div>
+                <div class="col text-center">
+                    <div class="p-4 bg-dark bg-opacity-25 rounded-3 d-flex align-items-center justify-content-center"
+                         style="height: 100px;">
+                        <img src="img/logo_comp/atom.svg" alt="Росатом" class="img-fluid opacity-50"
+                             style="max-height: 60px; object-fit: contain;">
+                    </div>
+                </div>
+                <div class="col text-center">
+                    <div class="p-4 bg-dark bg-opacity-25 rounded-3 d-flex align-items-center justify-content-center"
+                         style="height: 100px;">
+                        <img src="img/logo_comp/nijekamskhim.svg" alt="Нижнекамскнефтехим" class="img-fluid opacity-50"
+                             style="max-height: 60px; object-fit: contain;">
+                    </div>
+                </div>
+                <div class="col text-center">
+                    <div class="p-4 bg-dark bg-opacity-25 rounded-3 d-flex align-items-center justify-content-center"
+                         style="height: 100px;">
+                        <img src="img/logo_comp/metstroy.svg" alt="Метрострой" class="img-fluid opacity-50"
+                             style="max-height: 60px; object-fit: contain;">
+                    </div>
+                </div>
+                <div class="col text-center">
+                    <div class="p-4 bg-dark bg-opacity-25 rounded-3 d-flex align-items-center justify-content-center"
+                         style="height: 100px;">
+                        <img src="img/logo_comp/med.svg" alt="Медицина" class="img-fluid opacity-50"
+                             style="max-height: 60px; object-fit: contain;">
+                    </div>
+                </div>
+                <div class="col text-center">
+                    <div class="p-4 bg-dark bg-opacity-25 rounded-3 d-flex align-items-center justify-content-center"
+                         style="height: 100px;">
+                        <img src="img/logo_comp/sitilink.svg" alt="Ситилинк" class="img-fluid opacity-50"
+                             style="max-height: 60px; object-fit: contain;">
+                    </div>
+                </div>
+                <div class="col text-center">
+                    <div class="p-4 bg-dark bg-opacity-25 rounded-3 d-flex align-items-center justify-content-center"
+                         style="height: 100px;">
+                        <img src="img/logo_comp/cod.svg" alt="COD" class="img-fluid opacity-50"
+                             style="max-height: 60px; object-fit: contain;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container py-5">
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- Заголовок -->
+                    <h2 class="display-4 fw-bold mb-4 text-start">
+                        Мониторинг в реальном<br>
+                        времени
+                    </h2>
+
+                    <!-- Подзаголовок/описание -->
+                    <p class="lead text-secondary mb-5 text-start">
+                        Мы собираем все метрики в структурированные данные, которые можно опрашивать как обычную базу
+                        данных через SQL.
+                        Объединяем данные со всех ваших серверов, приложений, контейнеров, кластеров и облачных сервисов
+                        в одном месте
+                        с мгновенным доступом.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="container py-5">
+            <div class="row position-relative">
+                <!-- Колонка с изображением -->
+                <div class="col-md-8 position-relative" style="min-height: 625px;">
+                    <div class="position-absolute" style="top: -48px; right: -64px; z-index: -1;">
+                        <img src="img/image_2.jpg" alt="" class="img-fluid" style="max-width: 1002px;">
+                    </div>
+                </div>
+
+                <!-- Колонка с текстом, которая наезжает на изображение -->
+                <div class="col-md-4 mt-5">
+                    <p class="text-secondary mb-2 text-start">Обрабатываем до</p>
+                    <h3 class="display-5 fw-bold mb-3 text-start">
+                        <span class="text-primary">1 миллиарда</span><br>
+                        <span class="text-light">
           строк логов<br>
           в секунду
         </span>
-          </h3>
+                    </h3>
 
-          <hr class="opacity-25 my-4">
+                    <hr class="opacity-25 my-4">
 
-          <p class="text-secondary text-start" style="max-width: 320px;">
-            Работает на Clickhouse —<br>
-            революционной колоночной<br>
-            SQL базе данных для аналитики.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <div class="container py-5">
-      <div class="row g-4">
-        <!-- Первая карточка -->
-        <div class="col-lg-6">
-          <div class="card h-100 bg-dark bg-opacity-75 border border-opacity-20">
-            <div class="m-1">
-              <img src="img/image_3.jpg" alt="" class="img-fluid rounded-3">
-            </div>
-            <div class="card-body p-4">
-              <h4 class="card-title text-white fw-medium fs-4 text-start">Больше никаких сложностей с восстановлением и архивированием данных</h4>
-              <p class="card-text text-secondary mt-3 text-start">
-                Настраивайте срок хранения для каждого источника и запрашивайте всё, что нужно.
-                Больше не нужно архивировать логи в S3. Ищите по всем логам в любое время.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Вторая карточка -->
-        <div class="col-lg-6">
-          <div class="card h-100 bg-dark bg-opacity-75 border border-opacity-20">
-            <div class="m-1">
-              <img src="img/image_4.jpg" alt="" class="img-fluid rounded-3">
-            </div>
-            <div class="card-body p-4">
-              <h4 class="card-title text-white fw-medium fs-4 text-start">Превращаем текстовые логи в структурированный JSON</h4>
-              <p class="card-text text-secondary mt-3 text-start">
-                Все данные хранятся в структурированном формате, что делает поиск невероятно простым.
-                Кликните на email пользователя или ID потока и отфильтруйте нужный контекст одним щелчком.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Разделительная линия -->
-      <hr class="my-5 border-secondary opacity-25">
-    </div>
-
-    <div class="container py-5 text-center">
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <h2 class="display-4 fw-bold mt-5">
-            Исследуйте данные
-            <br>
-            в совместных дашбордах
-          </h2>
-          <p class="lead mt-4 mb-5 text-secondary mx-auto" style="max-width: 542px;">
-            Познакомьтесь с первой платформой мониторинга, созданной для совместной работы.
-            Присоединяйтесь к сессии коллеги в один клик и работайте над инцидентами вместе, прямо там, где находятся ваши данные.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="container py-5">
-      <div class="row g-4">
-        <!-- Первая карточка -->
-        <div class="col-lg-6">
-          <div class="card h-100 bg-dark bg-opacity-75 border border-opacity-20">
-            <div class="m-1">
-              <img src="img/image_5.jpg" alt="" class="img-fluid rounded-3">
-            </div>
-            <div class="card-body p-4">
-              <h4 class="card-title text-white fw-medium fs-4 text-start">Работайте вместе эффективнее</h4>
-              <p class="card-text text-secondary mt-3 text-start">
-                Следите за метриками вашей команды в реальном времени, комментируйте важные всплески данных
-                и делитесь фрагментами логов одним кликом. Разработка современного ПО — командная игра,
-                и мы делаем её удобнее.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Вторая карточка -->
-        <div class="col-lg-6">
-          <div class="card h-100 bg-dark bg-opacity-75 border border-opacity-20">
-            <div class="m-1">
-              <img src="img/image_6.jpg" alt="" class="img-fluid rounded-3">
-            </div>
-            <div class="card-body p-4">
-              <h4 class="card-title text-white fw-medium fs-4 text-start">Получайте ответы через SQL</h4>
-              <p class="card-text text-secondary mt-3 text-start">
-                Быстро находите нужную информацию с помощью мощного конструктора SQL-запросов.
-                Не нужно изучать новый язык запросов или привлекать аналитика данных —
-                всё необходимое уже встроено в интерфейс.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Разделительная линия -->
-      <hr class="my-5 border-secondary opacity-25">
-    </div>
-
-    <div class="container py-5 text-center">
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <h2 class="display-4 fw-bold mt-5">
-            Устраните проблемы и предотвращайте инциденты.
-          </h2>
-          <p class="lead mt-4 mb-5 text-secondary mx-auto" style="max-width: 542px;">
-            Получайте уведомления о несоответствиях и аномалиях в ваших логах до того, как они станут инцидентами.
-            Сократите количество ложных срабатываний и полностью настройте систему оповещений, чтобы она соответствовала вашей команде.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="container py-5">
-      <div class="row g-4">
-        <!-- Первая карточка -->
-        <div class="col-lg-6">
-          <div class="card h-100 bg-dark bg-opacity-75 border border-opacity-20">
-            <div class="m-1">
-              <img src="img/image_5.jpg" alt="" class="img-fluid rounded-3">
-            </div>
-            <div class="card-body p-7">
-              <h4 class="card-title text-white fw-medium fs-4 text-start">Надежное и гибкое обнаружение аномалий</h4>
-              <p class="card-text text-secondary mt-3 text-start">
-                Генерируйте оповещения в реальном времени на основе заданных порогов, процентных изменений или продвинутого
-                обнаружения аномалий. Получайте оповещения через Slack, электронную почту, телефон, SMS и другие каналы.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Вторая карточка -->
-        <div class="col-lg-6">
-          <div class="card h-100 bg-dark bg-opacity-75 border border-opacity-20">
-            <div class="m-1">
-              <img src="img/image_8.jpg" alt="" class="img-fluid rounded-3">
-            </div>
-            <div class="card-body p-4">
-              <h4 class="card-title text-white fw-medium fs-4 text-start">Управляйте инцидентами просто и эффективно</h4>
-              <p class="card-text text-secondary mt-3 text-start">
-                Теперь всё в одном месте: отслеживайте проблемы и держите команду в курсе через статус-страницу.
-                Одна кнопка — и система оповещает нужных людей в нужное время. Никакой головной боли с настройками.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Разделительная линия -->
-      <hr class="my-5 border-secondary opacity-25">
-    </div>
-
-    <section class="py-5 bg-dark text-light">
-      <div class="container">
-        <!-- Заголовок -->
-        <div class="text-center mb-5">
-          <h2 class="display-5 fw-bold">Разработчики выбирают. Бизнес доверяет.</h2>
-        </div>
-
-        <!-- Карточки -->
-        <div class="row g-4">
-          <!-- Масштабируемость -->
-          <div class="col-md-4">
-            <div class="d-flex flex-column h-100">
-              <div class="text-primary mb-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-graph-up" viewBox="0 0 16 16">
-                  <path d="M0 0h1v15h15v1H0V0Zm14.817 11.887a.5.5 0 0 0 .07-.704l-4.5-5.5a.5.5 0 0 0-.74-.037L7.06 8.233 3.404 3.206a.5.5 0 0 0-.808.588l4 5.5a.5.5 0 0 0 .758.06l2.609-2.61 4.15 5.073a.5.5 0 0 0 .704.07Z"/>
-                </svg>
-              </div>
-              <h3 class="h4 mb-3">Надёжное масштабирование</h3>
-              <p class="text-secondary mb-0  text-start">
-                Обрабатывайте терабайты логов ежедневно без просадок производительности.
-                Система автоматически справляется с резкими скачками нагрузки и растёт
-                вместе с вашими потребностями.
-              </p>
-            </div>
-          </div>
-
-          <!-- Безопасность -->
-          <div class="col-md-4">
-            <div class="d-flex flex-column h-100">
-              <div class="text-primary mb-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-shield-check" viewBox="0 0 16 16">
-                  <path d="M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.775 11.775 0 0 1-2.517 2.453 7.159 7.159 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7.158 7.158 0 0 1-1.048-.625 11.777 11.777 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 62.456 62.456 0 0 1 5.072.56z"/>
-                </svg>
-              </div>
-              <h3 class="h4 mb-3">Безопасность и соответствие</h3>
-              <p class="text-secondary mb-0  text-start">
-                Полный контроль над данными и расходами. Соответствие требованиям
-                152-ФЗ, GDPR и отраслевым стандартам. Данные хранятся на серверах в России.
-              </p>
-            </div>
-          </div>
-
-          <!-- Поддержка -->
-          <div class="col-md-4">
-            <div class="d-flex flex-column h-100">
-              <div class="text-primary mb-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-headset" viewBox="0 0 16 16">
-                  <path d="M8 1a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a6 6 0 1 1 12 0v6a2.5 2.5 0 0 1-2.5 2.5H9.366a1 1 0 0 1-.866.5h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 .866.5H11.5A1.5 1.5 0 0 0 13 12h-1a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1V6a5 5 0 0 0-5-5z"/>
-                </svg>
-              </div>
-              <h3 class="h4 mb-3">Техподдержка на русском</h3>
-              <p class="text-secondary mb-0  text-start">
-                Команда опытных инженеров всегда на связи. От внедрения до оптимизации —
-                поможем с любыми вопросами. Никаких ботов и очередей, только живое общение
-                с экспертами.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="container-fluid bg-dark text-light py-5">
-      <div class="row justify-content-center text-center">
-        <div class="col-12 col-md-8 col-lg-6">
-          <!-- Логотип -->
-          <div class="mb-4">
-            <svg class="text-light" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span class="ms-2 fw-bold">Logtail</span>
-          </div>
-
-          <!-- Заголовок -->
-          <h1 class="display-4 fw-bold mb-3">Простое решение для мониторинга</h1>
-
-          <!-- Подзаголовок -->
-          <p class="text-secondary mb-5">
-            Отслеживайте работу любых систем, находите причины сбоев и решайте инциденты быстрее.
-          </p>
-
-          <!-- Форма -->
-          <div class="mt-5">
-            <div class="row justify-content-center">
-              <div class="col-12">
-                <form class="d-flex gap-3">
-                  <input type="email"
-                         class="form-control bg-dark border-secondary text-light"
-                         placeholder="Ваш рабочий email"
-                         required>
-                  <button type="submit"
-                          class="btn btn-primary px-4 text-nowrap fw-medium">
-                    Старт за 30 секунд
-                  </button>
-                </form>
-                <div class="mt-3 text-center text-muted">
-                  Начните мониторинг бесплатно или <a href="#" class="text-primary text-decoration-none">запишитесь на демо</a>
+                    <p class="text-secondary text-start" style="max-width: 320px;">
+                        Работает на Clickhouse —<br>
+                        революционной колоночной<br>
+                        SQL базе данных для аналитики.
+                    </p>
                 </div>
-              </div>
             </div>
-          </div>
+        </section>
+
+        <div class="container py-5">
+            <div class="row g-4">
+                <!-- Первая карточка -->
+                <div class="col-lg-6">
+                    <div class="card h-100 bg-dark bg-opacity-75 border border-opacity-20">
+                        <div class="m-1">
+                            <img src="img/image_3.jpg" alt="" class="img-fluid rounded-3">
+                        </div>
+                        <div class="card-body p-4">
+                            <h4 class="card-title text-white fw-medium fs-4 text-start">Больше никаких сложностей с
+                                восстановлением и архивированием данных</h4>
+                            <p class="card-text text-secondary mt-3 text-start">
+                                Настраивайте срок хранения для каждого источника и запрашивайте всё, что нужно.
+                                Больше не нужно архивировать логи в S3. Ищите по всем логам в любое время.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Вторая карточка -->
+                <div class="col-lg-6">
+                    <div class="card h-100 bg-dark bg-opacity-75 border border-opacity-20">
+                        <div class="m-1">
+                            <img src="img/image_4.jpg" alt="" class="img-fluid rounded-3">
+                        </div>
+                        <div class="card-body p-4">
+                            <h4 class="card-title text-white fw-medium fs-4 text-start">Превращаем текстовые логи в
+                                структурированный JSON</h4>
+                            <p class="card-text text-secondary mt-3 text-start">
+                                Все данные хранятся в структурированном формате, что делает поиск невероятно простым.
+                                Кликните на email пользователя или ID потока и отфильтруйте нужный контекст одним
+                                щелчком.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Разделительная линия -->
+            <hr class="my-5 border-secondary opacity-25">
         </div>
-      </div>
+
+        <div class="container py-5 text-center">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <h2 class="display-4 fw-bold mt-5">
+                        Исследуйте данные
+                        <br>
+                        в совместных дашбордах
+                    </h2>
+                    <p class="lead mt-4 mb-5 text-secondary mx-auto" style="max-width: 542px;">
+                        Познакомьтесь с первой платформой мониторинга, созданной для совместной работы.
+                        Присоединяйтесь к сессии коллеги в один клик и работайте над инцидентами вместе, прямо там, где
+                        находятся ваши данные.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container py-5">
+            <div class="row g-4">
+                <!-- Первая карточка -->
+                <div class="col-lg-6">
+                    <div class="card h-100 bg-dark bg-opacity-75 border border-opacity-20">
+                        <div class="m-1">
+                            <img src="img/image_5.jpg" alt="" class="img-fluid rounded-3">
+                        </div>
+                        <div class="card-body p-4">
+                            <h4 class="card-title text-white fw-medium fs-4 text-start">Работайте вместе
+                                эффективнее</h4>
+                            <p class="card-text text-secondary mt-3 text-start">
+                                Следите за метриками вашей команды в реальном времени, комментируйте важные всплески
+                                данных
+                                и делитесь фрагментами логов одним кликом. Разработка современного ПО — командная игра,
+                                и мы делаем её удобнее.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Вторая карточка -->
+                <div class="col-lg-6">
+                    <div class="card h-100 bg-dark bg-opacity-75 border border-opacity-20">
+                        <div class="m-1">
+                            <img src="img/image_6.jpg" alt="" class="img-fluid rounded-3">
+                        </div>
+                        <div class="card-body p-4">
+                            <h4 class="card-title text-white fw-medium fs-4 text-start">Получайте ответы через SQL</h4>
+                            <p class="card-text text-secondary mt-3 text-start">
+                                Быстро находите нужную информацию с помощью мощного конструктора SQL-запросов.
+                                Не нужно изучать новый язык запросов или привлекать аналитика данных —
+                                всё необходимое уже встроено в интерфейс.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Разделительная линия -->
+            <hr class="my-5 border-secondary opacity-25">
+        </div>
+
+        <div class="container py-5 text-center">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <h2 class="display-4 fw-bold mt-5">
+                        Устраните проблемы и предотвращайте инциденты.
+                    </h2>
+                    <p class="lead mt-4 mb-5 text-secondary mx-auto" style="max-width: 542px;">
+                        Получайте уведомления о несоответствиях и аномалиях в ваших логах до того, как они станут
+                        инцидентами.
+                        Сократите количество ложных срабатываний и полностью настройте систему оповещений, чтобы она
+                        соответствовала вашей команде.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container py-5">
+            <div class="row g-4">
+                <!-- Первая карточка -->
+                <div class="col-lg-6">
+                    <div class="card h-100 bg-dark bg-opacity-75 border border-opacity-20">
+                        <div class="m-1">
+                            <img src="img/image_5.jpg" alt="" class="img-fluid rounded-3">
+                        </div>
+                        <div class="card-body p-7">
+                            <h4 class="card-title text-white fw-medium fs-4 text-start">Надежное и гибкое обнаружение
+                                аномалий</h4>
+                            <p class="card-text text-secondary mt-3 text-start">
+                                Генерируйте оповещения в реальном времени на основе заданных порогов, процентных
+                                изменений или продвинутого
+                                обнаружения аномалий. Получайте оповещения через Slack, электронную почту, телефон, SMS
+                                и другие каналы.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Вторая карточка -->
+                <div class="col-lg-6">
+                    <div class="card h-100 bg-dark bg-opacity-75 border border-opacity-20">
+                        <div class="m-1">
+                            <img src="img/image_8.jpg" alt="" class="img-fluid rounded-3">
+                        </div>
+                        <div class="card-body p-4">
+                            <h4 class="card-title text-white fw-medium fs-4 text-start">Управляйте инцидентами просто и
+                                эффективно</h4>
+                            <p class="card-text text-secondary mt-3 text-start">
+                                Теперь всё в одном месте: отслеживайте проблемы и держите команду в курсе через
+                                статус-страницу.
+                                Одна кнопка — и система оповещает нужных людей в нужное время. Никакой головной боли с
+                                настройками.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Разделительная линия -->
+            <hr class="my-5 border-secondary opacity-25">
+        </div>
+
+        <section class="py-5 bg-dark text-light">
+            <div class="container">
+                <!-- Заголовок -->
+                <div class="text-center mb-5">
+                    <h2 class="display-5 fw-bold">Разработчики выбирают. Бизнес доверяет.</h2>
+                </div>
+
+                <!-- Карточки -->
+                <div class="row g-4">
+                    <!-- Масштабируемость -->
+                    <div class="col-md-4">
+                        <div class="d-flex flex-column h-100">
+                            <div class="text-primary mb-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                     class="bi bi-graph-up" viewBox="0 0 16 16">
+                                    <path d="M0 0h1v15h15v1H0V0Zm14.817 11.887a.5.5 0 0 0 .07-.704l-4.5-5.5a.5.5 0 0 0-.74-.037L7.06 8.233 3.404 3.206a.5.5 0 0 0-.808.588l4 5.5a.5.5 0 0 0 .758.06l2.609-2.61 4.15 5.073a.5.5 0 0 0 .704.07Z"/>
+                                </svg>
+                            </div>
+                            <h3 class="h4 mb-3">Надёжное масштабирование</h3>
+                            <p class="text-secondary mb-0  text-start">
+                                Обрабатывайте терабайты логов ежедневно без просадок производительности.
+                                Система автоматически справляется с резкими скачками нагрузки и растёт
+                                вместе с вашими потребностями.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Безопасность -->
+                    <div class="col-md-4">
+                        <div class="d-flex flex-column h-100">
+                            <div class="text-primary mb-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                     class="bi bi-shield-check" viewBox="0 0 16 16">
+                                    <path d="M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.775 11.775 0 0 1-2.517 2.453 7.159 7.159 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7.158 7.158 0 0 1-1.048-.625 11.777 11.777 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 62.456 62.456 0 0 1 5.072.56z"/>
+                                </svg>
+                            </div>
+                            <h3 class="h4 mb-3">Безопасность и соответствие</h3>
+                            <p class="text-secondary mb-0  text-start">
+                                Полный контроль над данными и расходами. Соответствие требованиям
+                                152-ФЗ, GDPR и отраслевым стандартам. Данные хранятся на серверах в России.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Поддержка -->
+                    <div class="col-md-4">
+                        <div class="d-flex flex-column h-100">
+                            <div class="text-primary mb-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                     class="bi bi-headset" viewBox="0 0 16 16">
+                                    <path d="M8 1a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a6 6 0 1 1 12 0v6a2.5 2.5 0 0 1-2.5 2.5H9.366a1 1 0 0 1-.866.5h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 .866.5H11.5A1.5 1.5 0 0 0 13 12h-1a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1V6a5 5 0 0 0-5-5z"/>
+                                </svg>
+                            </div>
+                            <h3 class="h4 mb-3">Техподдержка на русском</h3>
+                            <p class="text-secondary mb-0  text-start">
+                                Команда опытных инженеров всегда на связи. От внедрения до оптимизации —
+                                поможем с любыми вопросами. Никаких ботов и очередей, только живое общение
+                                с экспертами.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container-fluid overflow-hidden bg-dark text-light py-5">
+            <div class="row justify-content-center text-center">
+                <div class="col-12 col-md-8 col-lg-6">
+
+                    <br/>
+                    <br/>
+                    <br/>
+                    <!-- Заголовок -->
+                    <h1 class="display-4 fw-bold mb-3">Простое решение для мониторинга</h1>
+
+                    <!-- Подзаголовок -->
+                    <p class="text-secondary mb-5">
+                        Отслеживайте работу любых систем, находите причины сбоев и решайте инциденты быстрее.
+                    </p>
+
+                    <!-- Форма -->
+                    <div class="mt-5">
+                        <div class="row justify-content-center">
+                            <div class="col-12">
+                                <form class="d-flex gap-3">
+                                    <input type="email"
+                                           class="form-control bg-dark border-secondary text-light"
+                                           placeholder="Ваш рабочий email"
+                                           required>
+                                    <button type="submit"
+                                            class="btn btn-primary px-4 text-nowrap fw-medium">
+                                        Старт за 30 секунд
+                                    </button>
+                                </form>
+                                <div class="mt-3 text-center text-muted">
+                                    Начните мониторинг бесплатно или <a href="#"
+                                                                        class="text-primary text-decoration-none">запишитесь
+                                    на демо</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <br/>
+                    <br/>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
+
+<!-- Футер -->
+<footer class="bg-dark py-5 mt-5">
+    <div class="container">
+        <div class="row g-4">
+            <!-- Первая колонка -->
+            <div class="col-lg-4 col-md-6">
+                <div class="d-flex align-items-center mb-3">
+                    <svg class="text-light" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round"/>
+                        <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round"/>
+                    </svg>
+                    <span class="ms-2 text-light fw-bold">Logtail</span>
+                </div>
+                <p class="text-secondary mb-4">
+                    Современная платформа для мониторинга и анализа логов с молниеносным поиском и совместной работой.
+                </p>
+                <div class="d-flex gap-3">
+                    <a href="#" class="text-secondary hover-text-light">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                             class="bi bi-github" viewBox="0 0 16 16">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-secondary hover-text-light">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                             class="bi bi-telegram" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Вторая колонка -->
+            <div class="col-lg-2 col-md-6">
+                <h5 class="text-light mb-3">Продукт</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#" class="text-secondary text-decoration-none">Возможности</a></li>
+                    <li class="mb-2"><a href="#" class="text-secondary text-decoration-none">Цены</a></li>
+                    <li class="mb-2"><a href="#" class="text-secondary text-decoration-none">Безопасность</a></li>
+                    <li class="mb-2"><a href="#" class="text-secondary text-decoration-none">Интеграции</a></li>
+                </ul>
+            </div>
+
+            <!-- Третья колонка -->
+            <div class="col-lg-2 col-md-6">
+                <h5 class="text-light mb-3">Ресурсы</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#" class="text-secondary text-decoration-none">Документация</a></li>
+                    <li class="mb-2"><a href="#" class="text-secondary text-decoration-none">API</a></li>
+                    <li class="mb-2"><a href="#" class="text-secondary text-decoration-none">Статус</a></li>
+                    <li class="mb-2"><a href="#" class="text-secondary text-decoration-none">Блог</a></li>
+                </ul>
+            </div>
+
+            <!-- Четвертая колонка -->
+            <div class="col-lg-2 col-md-6">
+                <h5 class="text-light mb-3">Компания</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#" class="text-secondary text-decoration-none">О нас</a></li>
+                    <li class="mb-2"><a href="#" class="text-secondary text-decoration-none">Карьера</a></li>
+                    <li class="mb-2"><a href="#" class="text-secondary text-decoration-none">Партнёры</a></li>
+                    <li class="mb-2"><a href="#" class="text-secondary text-decoration-none">Контакты</a></li>
+                </ul>
+            </div>
+
+            <!-- Пятая колонка -->
+            <div class="col-lg-2 col-md-6">
+                <h5 class="text-light mb-3">Поддержка</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#" class="text-secondary text-decoration-none">Помощь</a></li>
+                    <li class="mb-2"><a href="#" class="text-secondary text-decoration-none">База знаний</a></li>
+                    <li class="mb-2"><a href="#" class="text-secondary text-decoration-none">Сообщество</a></li>
+                    <li class="mb-2"><a href="#" class="text-secondary text-decoration-none">Обратная связь</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <hr class="border-secondary my-5">
+
+        <!-- Нижняя часть футера -->
+        <div class="row align-items-center">
+            <div class="col-md-6 text-center text-md-start">
+                <p class="text-secondary mb-0">© 2024 Logtail. Все права защищены.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
+                <ul class="list-inline mb-0">
+                    <li class="list-inline-item">
+                        <a href="#" class="text-secondary text-decoration-none">Условия использования</a>
+                    </li>
+                    <li class="list-inline-item ms-3">
+                        <a href="#" class="text-secondary text-decoration-none">Политика конфиденциальности</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
