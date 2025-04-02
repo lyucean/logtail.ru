@@ -289,3 +289,141 @@ footer a.text-secondary:hover {
 .stats-text-max-width {
     max-width: 320px;
 }
+
+/* Общие стили */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Стили для навигации */
+.navbar {
+    transition: background-color 0.3s ease;
+}
+
+.navbar-brand {
+    font-weight: 700;
+}
+
+/* Стили для главного экрана */
+.hero {
+    padding-top: 100px;
+}
+
+.tracking-widest {
+    letter-spacing: 0.15em;
+}
+
+/* Стили для логотипов компаний */
+.company-logo {
+    max-height: 60px;
+    object-fit: contain;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+.company-logo:hover {
+    filter: grayscale(0%);
+}
+
+/* Стили для секции статистики */
+.stats-section {
+    position: relative;
+}
+
+.stats-image-container {
+    position: relative;
+}
+
+.stats-background-image {
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.stats-text-max-width {
+    max-width: 280px;
+}
+
+/* Стили для карточек */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Стили для аккордеона */
+.accordion-button:not(.collapsed) {
+    background-color: rgba(13, 110, 253, 0.1) !important;
+    color: #0d6efd !important;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Стили для команды */
+.team-photo {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+}
+
+.team-member-photo {
+    position: relative;
+    display: inline-block;
+}
+
+.team-member-photo::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    border: 3px solid #0d6efd;
+    opacity: 0.5;
+}
+
+/* Стили для интеграций */
+.integration-logo {
+    max-height: 50px;
+    object-fit: contain;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.integration-logo:hover {
+    filter: grayscale(0%);
+    transform: scale(1.1);
+}
+
+/* Стили для ссылок */
+.hover-text-light:hover {
+    color: #fff !important;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Медиа-запросы */
+@media (max-width: 768px) {
+    .hero {
+        padding-top: 80px;
+    }
+
+    .team-photo {
+        width: 100px;
+        height: 100px;
+    }
+}
