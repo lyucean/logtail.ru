@@ -69,13 +69,13 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             # Создаем файл логов, если он не существует
-            sudo touch /usr/share/nginx/html/leads.log
+            sudo touch /var/www/logtail.ru/public/leads.log
             # Меняем владельца на www-data (пользователь nginx/php)
-            sudo chown www-data:www-data /usr/share/nginx/html/leads.log
+            sudo chown www-data:www-data /var/www/logtail.ru/public/leads.log
             # Устанавливаем права на чтение и запись
-            sudo chmod 664 /usr/share/nginx/html/leads.log
+            sudo chmod 664 /var/www/logtail.ru/public/leads.log
             # Проверяем, что права установлены
-            ls -la /usr/share/nginx/html/leads.log
+            ls -la /var/www/logtail.ru/public/leads.log
 
   test:
     runs-on: ubuntu-latest
