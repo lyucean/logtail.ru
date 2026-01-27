@@ -62,7 +62,11 @@ switch ($action) {
 
     case 'newsletter':
         $source = 'Форма подписки внизу страницы';
+        $companyName = htmlspecialchars($postData['company_name'] ?? '');
         $messageText = "📰 Новый потенциальный клиент \nEmail: $email";
+        if (!empty($companyName)) {
+            $messageText .= "\nКомпания: $companyName";
+        }
         break;
 
     case 'contact':
@@ -83,7 +87,11 @@ switch ($action) {
 
     case 'demo':
         $source = 'Запрос демо сверху страницы';
+        $companyName = htmlspecialchars($postData['company_name'] ?? '');
         $messageText = "🎮 Новый запрос на демо\nEmail: $email";
+        if (!empty($companyName)) {
+            $messageText .= "\nКомпания: $companyName";
+        }
         break;
 
     default:

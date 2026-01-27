@@ -53,7 +53,7 @@
             "operatingSystem": "All",
             "offers": {
                 "@type": "Offer",
-                "price": "0",
+                "price": "500",
                 "priceCurrency": "RUB"
             }
         }
@@ -125,12 +125,19 @@
         <div class="mt-5">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-8 col-lg-6">
-                    <form id="heroForm" class="d-flex gap-3">
-                        <input type="email"
-                               name="email"
-                               class="form-control bg-dark border-secondary text-light"
-                               placeholder="Ваш рабочий email"
-                               required>
+                    <form id="heroForm" class="d-flex flex-column gap-3">
+                        <div class="d-flex gap-3">
+                            <input type="email"
+                                   name="email"
+                                   class="form-control bg-dark border-secondary text-light"
+                                   placeholder="Ваш рабочий email"
+                                   required>
+                            <input type="text"
+                                   name="company_name"
+                                   class="form-control bg-dark border-secondary text-light"
+                                   placeholder="Название компании"
+                                   required>
+                        </div>
                         <button type="submit" class="btn btn-primary px-4 text-nowrap">
                             Старт за 30 секунд
                         </button>
@@ -610,13 +617,13 @@
             </div>
 
             <div class="row g-4 justify-content-center">
-                <!-- Бесплатный тариф -->
+                <!-- Старт тариф -->
                 <div class="col-lg-4 col-md-6">
                     <div class="card h-100 bg-dark bg-opacity-75 border border-opacity-20">
                         <div class="card-body p-4">
                             <h3 class="card-title text-white">Старт</h3>
                             <div class="my-3">
-                                <span class="display-5 fw-bold">0 ₽</span>
+                                <span class="display-5 fw-bold">500 ₽</span>
                                 <span class="text-secondary">/месяц</span>
                             </div>
                             <p class="text-secondary">Идеально для небольших проектов и знакомства с платформой</p>
@@ -629,7 +636,7 @@
                                 <li class="mb-2">✓ Стандартная скорость поиска</li>
                                 <li class="mb-2">✓ Соответствие 152-ФЗ (сертификат)</li>
                             </ul>
-                            <a href="#" class="btn btn-outline-primary w-100 mt-4">Начать бесплатно</a>
+                            <a href="#" class="btn btn-outline-primary w-100 mt-4">Выбрать план</a>
                         </div>
                     </div>
                 </div>
@@ -709,12 +716,19 @@
                     <div class="mt-5">
                         <div class="row justify-content-center">
                             <div class="col-12">
-                                <form class="d-flex gap-3">
-                                    <input type="email"
-                                           name="email"
-                                           class="form-control bg-dark border-secondary text-light"
-                                           placeholder="Ваш рабочий email"
-                                           required>
+                                <form id="footerForm" class="d-flex flex-column gap-3">
+                                    <div class="d-flex gap-3">
+                                        <input type="email"
+                                               name="email"
+                                               class="form-control bg-dark border-secondary text-light"
+                                               placeholder="Ваш рабочий email"
+                                               required>
+                                        <input type="text"
+                                               name="company_name"
+                                               class="form-control bg-dark border-secondary text-light"
+                                               placeholder="Название компании"
+                                               required>
+                                    </div>
                                     <button type="submit"
                                             class="btn btn-primary px-4 text-nowrap fw-medium">
                                         Старт за 30 секунд

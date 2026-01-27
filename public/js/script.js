@@ -117,11 +117,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Контактная форма
     setupFormHandler('contactForm', 'contact');
 
-    // Обработка формы в нижней части страницы - изменено с 'bottom_form' на 'newsletter'
-    const footerForm = document.querySelector('.hero form:not(#heroForm)');
-    if (footerForm) {
-        footerForm.id = 'footerForm';
-        setupFormHandler('footerForm', 'newsletter', function(data) {
+    // Обработка формы в нижней части страницы
+    setupFormHandler('footerForm', 'newsletter', function(data) {
+        const footerForm = document.getElementById('footerForm');
+        if (footerForm) {
             const formContainer = footerForm.parentElement;
             if (formContainer) {
                 formContainer.innerHTML = `
@@ -130,8 +129,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 `;
             }
-        });
-    }
+        }
+    });
 
     // Переключение между модальными окнами
     const modals = document.querySelectorAll('.modal');

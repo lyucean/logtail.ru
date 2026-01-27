@@ -217,12 +217,20 @@ footer a.text-secondary:hover {
         padding-top: 6rem;
     }
 
-    form.d-flex {
+    form.d-flex.flex-column {
         flex-direction: column;
     }
 
-    form.d-flex .btn {
+    form.d-flex.flex-column .btn {
         margin-top: 0.5rem;
+    }
+
+    form.d-flex .d-flex {
+        flex-direction: column;
+    }
+
+    form.d-flex .d-flex .form-control {
+        margin-bottom: 0.5rem;
     }
 
     .navbar-brand {
