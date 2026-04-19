@@ -9,6 +9,7 @@ header('Content-Type: application/json');
 $env = parse_ini_file(__DIR__ . '/.env');
 $telegramToken = $env['TELEGRAM_BOT_TOKEN'] ?? '';
 $telegramChatId = $env['TELEGRAM_CHAT_ID'] ?? '';
+$telegramHttpProxy = trim($env['TELEGRAM_HTTP_PROXY'] ?? '');
 
 // Проверяем наличие токена и chat ID
 if (empty($telegramToken) || empty($telegramChatId)) {
@@ -129,6 +130,11 @@ $ch = curl_init($telegramUrl);
 curl_setopt($ch, CURLOPT_POST, 1);
 curl_setopt($ch, CURLOPT_POSTFIELDS, $telegramData);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+if ($telegramHttpProxy !== '') {
+    curl_setopt($ch, CURLOPT_PROXY, $telegramHttpProxy);
+    curl_setopt($ch, CURLOPT_PROXYTYPE, CURLPROXY_HTTP);
+    curl_setopt($ch, CURLOPT_HTTPPROXYTUNNEL, true);
+}
 $telegramResponse = curl_exec($ch);
 $telegramError = curl_error($ch);
 curl_close($ch);
